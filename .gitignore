@@ -1,0 +1,9 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+.env.*
+
+# Vercel configuration (if any)
+.vercel

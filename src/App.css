@@ -1,0 +1,19 @@
+/* App.css or your specific CSS file */
+
+.arrow {
+  cursor: pointer;
+  font-size: 24px;
+  color: white; /* Change color as needed */
+  z-index: 100; /* Ensure arrows are on top */
+  position: absolute;
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%);
+}
+
+.right-arrow {
+  right: 10px; /* Positioning for right arrow */
+}
+
+.left-arrow {
+  left: 10px; /* Positioning for left arrow */
+}
