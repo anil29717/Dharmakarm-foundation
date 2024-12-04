@@ -31,7 +31,7 @@ const LeftArrow = styled(Arrow)`
 const ImageSlider = () => {
   const settings = {
     autoplay: true,
-    autoplaySpeed: 1000,
+    autoplaySpeed: 2000,
     arrows: true,
     infinite: true,
     slidesToShow: 1,

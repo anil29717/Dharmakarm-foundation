@@ -14,7 +14,7 @@ const CTASection = () => {
       <section className="w-full flex justify-center items-center my-8">
       <div className="w-11/12 flex flex-col md:flex-row items-center justify-between p-6 bg-orange-100 rounded-lg shadow-lg">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4 md:mb-0">
-          Let’s Give a Smile to Someone
+          Let’s Give a Smile, Get blessed
         </h2>
         <button 
         onClick={handleDonateClick} 
