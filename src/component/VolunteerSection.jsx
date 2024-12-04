@@ -13,7 +13,7 @@ const VolunteerSection = () => {
         onClick={handleVolunteerClick}
         className="bg-orange-500 text-white px-6 py-3 rounded shadow-lg hover:bg-orange-600 transition"
       >
-        Become a Volunteer
+        Join as a Volunteer
       </button>
     </section>
   );
