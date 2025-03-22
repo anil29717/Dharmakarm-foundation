@@ -10,7 +10,7 @@ const LoginPage = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/admin/login', credentials);
+      const response = await axios.post('https://dharmakarm-foundation.onrender.com/api/admin/login', credentials);
       if (response.status === 200) {
         onLogin();
         navigate('/');

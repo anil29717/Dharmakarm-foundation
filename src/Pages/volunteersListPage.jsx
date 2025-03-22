@@ -17,7 +17,7 @@ const VolunteersListPage = () => {
     const fetchVolunteers = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:5000/api/volunteers');
+        const response = await axios.get('https://dharmakarm-foundation.onrender.com/api/volunteers');
         if (Array.isArray(response.data)) {
           setVolunteers(response.data);
           setFilteredVolunteers(response.data);

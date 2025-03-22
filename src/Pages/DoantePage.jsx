@@ -81,7 +81,7 @@ const DonatePage = () => {
         ...(donationType === 'Money' && { moneyAmount })
       };
 
-      const endpoint = `http://localhost:5000/api/donate/${donorType.toLowerCase()}`;
+      const endpoint = `https://dharmakarm-foundation.onrender.com/api/donate/${donorType.toLowerCase()}`;
       const response = await axios.post(endpoint, donationData);
       setDonationId(response.data.donationId);
       navigate('/');
@@ -235,144 +235,144 @@ const DonatePage = () => {
                 </div>
               </div>
             </div>
-            </div>
-          
+          </div>
+
         )}
 
-            {/* Restaurant Details Form */}
-            {donorType === 'Restaurant' && (
-              <div className="space-y-4 bg-white p-4 rounded-lg shadow-md">
-                <h3 className="text-xl font-semibold text-orange-700">Restaurant Details</h3>
+        {/* Restaurant Details Form */}
+        {donorType === 'Restaurant' && (
+          <div className="space-y-4 bg-white p-4 rounded-lg shadow-md">
+            <h3 className="text-xl font-semibold text-orange-700">Restaurant Details</h3>
 
-                {/* Restaurant Name Input */}
-                <div className="flex items-center border border-gray-300 rounded-md overflow-hidden bg-white">
-                  <div className="p-2 bg-orange-50">
-                    <Home className="text-orange-600" />
-                  </div>
-                  <input
-                    type="text"
-                    name="name"
-                    value={restaurantDetails.name}
-                    onChange={handleRestaurantInputChange}
-                    placeholder="Restaurant Name"
-                    className="w-full p-2 outline-none"
-                    required
-                  />
-                </div>
+            {/* Restaurant Name Input */}
+            <div className="flex items-center border border-gray-300 rounded-md overflow-hidden bg-white">
+              <div className="p-2 bg-orange-50">
+                <Home className="text-orange-600" />
+              </div>
+              <input
+                type="text"
+                name="name"
+                value={restaurantDetails.name}
+                onChange={handleRestaurantInputChange}
+                placeholder="Restaurant Name"
+                className="w-full p-2 outline-none"
+                required
+              />
+            </div>
 
-                {/* Location Input */}
-                <div className="flex items-center border border-gray-300 rounded-md overflow-hidden bg-white">
-                  <div className="p-2 bg-orange-50">
-                    <Home className="text-orange-600" />
-                  </div>
-                  <input
-                    type="text"
-                    name="location"
-                    value={restaurantDetails.location}
-                    onChange={handleRestaurantInputChange}
-                    placeholder="Location"
-                    className="w-full p-2 outline-none"
-                    required
-                  />
-                </div>
+            {/* Location Input */}
+            <div className="flex items-center border border-gray-300 rounded-md overflow-hidden bg-white">
+              <div className="p-2 bg-orange-50">
+                <Home className="text-orange-600" />
+              </div>
+              <input
+                type="text"
+                name="location"
+                value={restaurantDetails.location}
+                onChange={handleRestaurantInputChange}
+                placeholder="Location"
+                className="w-full p-2 outline-none"
+                required
+              />
+            </div>
 
-                {/* Contact Number Input */}
-                <div className="flex items-center border border-gray-300 rounded-md overflow-hidden bg-white">
-                  <div className="p-2 bg-orange-50">
-                    <Phone className="text-orange-600" />
-                  </div>
-                  <input
-                    type="tel"
-                    name="contactNumber"
-                    value={restaurantDetails.contactNumber}
-                    onChange={handleRestaurantInputChange}
-                    placeholder="Contact Number"
-                    pattern="[0-9]{10}"
-                    maxLength="10"
-                    className="w-full p-2 outline-none"
-                    required
-                  />
-                </div>
+            {/* Contact Number Input */}
+            <div className="flex items-center border border-gray-300 rounded-md overflow-hidden bg-white">
+              <div className="p-2 bg-orange-50">
+                <Phone className="text-orange-600" />
+              </div>
+              <input
+                type="tel"
+                name="contactNumber"
+                value={restaurantDetails.contactNumber}
+                onChange={handleRestaurantInputChange}
+                placeholder="Contact Number"
+                pattern="[0-9]{10}"
+                maxLength="10"
+                className="w-full p-2 outline-none"
+                required
+              />
+            </div>
 
-                {/* Email Input */}
-                <div className="flex items-center border border-gray-300 rounded-md overflow-hidden bg-white">
-                  <div className="p-2 bg-orange-50">
-                    <Mail className="text-orange-600" />
-                  </div>
-                  <input
-                    type="email"
-                    name="email"
-                    value={restaurantDetails.email}
-                    onChange={handleRestaurantInputChange}
-                    placeholder="Email"
-                    className="w-full p-2 outline-none"
-                    required
-                  />
-                </div>
+            {/* Email Input */}
+            <div className="flex items-center border border-gray-300 rounded-md overflow-hidden bg-white">
+              <div className="p-2 bg-orange-50">
+                <Mail className="text-orange-600" />
+              </div>
+              <input
+                type="email"
+                name="email"
+                value={restaurantDetails.email}
+                onChange={handleRestaurantInputChange}
+                placeholder="Email"
+                className="w-full p-2 outline-none"
+                required
+              />
+            </div>
 
-                <div className="border-t border-gray-200 pt-4">
-                  <h4 className="font-medium text-orange-700 mb-2">Food Items</h4>
-                  {restaurantDetails.foodItems.map((food, index) => (
-                    <div key={index} className="flex items-center space-x-2 mb-2">
-                      <div className="flex items-center border border-gray-300 rounded-md overflow-hidden bg-white flex-grow">
-                        <div className="p-2 bg-orange-50">
-                          <Coffee className="text-orange-600" />
-                        </div>
-                        <input
-                          type="text"
-                          value={food}
-                          onChange={(e) => handleFoodItemChange(index, e.target.value)}
-                          placeholder="Food Item"
-                          className="w-full p-2 outline-none"
-                          required
-                        />
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => removeFoodItem(index)}
-                        className="bg-red-500 text-white p-2 rounded-full"
-                        disabled={restaurantDetails.foodItems.length === 1}
-                      >
-                        <MinusCircle size={20} />
-                      </button>
+            <div className="border-t border-gray-200 pt-4">
+              <h4 className="font-medium text-orange-700 mb-2">Food Items</h4>
+              {restaurantDetails.foodItems.map((food, index) => (
+                <div key={index} className="flex items-center space-x-2 mb-2">
+                  <div className="flex items-center border border-gray-300 rounded-md overflow-hidden bg-white flex-grow">
+                    <div className="p-2 bg-orange-50">
+                      <Coffee className="text-orange-600" />
                     </div>
-                  ))}
+                    <input
+                      type="text"
+                      value={food}
+                      onChange={(e) => handleFoodItemChange(index, e.target.value)}
+                      placeholder="Food Item"
+                      className="w-full p-2 outline-none"
+                      required
+                    />
+                  </div>
                   <button
                     type="button"
-                    onClick={addFoodItem}
-                    className="flex items-center justify-center w-full p-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition-colors"
+                    onClick={() => removeFoodItem(index)}
+                    className="bg-red-500 text-white p-2 rounded-full"
+                    disabled={restaurantDetails.foodItems.length === 1}
                   >
-                    <PlusCircle size={20} className="mr-2" /> Add Food Item
+                    <MinusCircle size={20} />
                   </button>
                 </div>
-              </div>
-            )}
+              ))}
+              <button
+                type="button"
+                onClick={addFoodItem}
+                className="flex items-center justify-center w-full p-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition-colors"
+              >
+                <PlusCircle size={20} className="mr-2" /> Add Food Item
+              </button>
+            </div>
+          </div>
+        )}
 
 
 
-            {/* Error message */}
-            {errorMessage && (
-              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
-                {errorMessage}
-              </div>
-            )}
+        {/* Error message */}
+        {errorMessage && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+            {errorMessage}
+          </div>
+        )}
 
-            {/* Submit button */}
-            <button
-              type="submit"
-              className="w-full py-3 px-6 text-white font-bold rounded-md shadow-md transition-all bg-orange-500 hover:bg-orange-600 flex items-center justify-center"
-            >
-              <Heart size={24} className="mr-2" />
-              Donate Now
-            </button>
+        {/* Submit button */}
+        <button
+          type="submit"
+          className="w-full py-3 px-6 text-white font-bold rounded-md shadow-md transition-all bg-orange-500 hover:bg-orange-600 flex items-center justify-center"
+        >
+          <Heart size={24} className="mr-2" />
+          Donate Now
+        </button>
 
-            {/* Success message */}
-            {donationId && (
-              <div className="mt-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
-                Donation successful! Your donation ID is <span className="font-bold">{donationId}</span>.
-              </div>
-            )}
-          </form>
+        {/* Success message */}
+        {donationId && (
+          <div className="mt-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
+            Donation successful! Your donation ID is <span className="font-bold">{donationId}</span>.
+          </div>
+        )}
+      </form>
     </div>
   );
 };
