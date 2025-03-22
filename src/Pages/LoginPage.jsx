@@ -1,20 +1,15 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { User, Lock } from 'lucide-react';
 
 const LoginPage = ({ onLogin }) => {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setCredentials({ ...credentials, [name]: value });
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Make the API call to the login route
       const response = await axios.post('http://localhost:5000/api/admin/login', credentials);
       if (response.status === 200) {
         onLogin();
@@ -27,33 +22,42 @@ const LoginPage = ({ onLogin }) => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <form className="bg-white p-6 rounded shadow-md" onSubmit={handleSubmit}>
-        <h2 className="text-2xl font-bold mb-4">Admin Login</h2>
+      <form className="bg-white p-8 rounded-lg shadow-md w-80" onSubmit={handleSubmit}>
+        <h2 className="text-2xl font-bold mb-6 text-center">Admin Login</h2>
+        
         <div className="mb-4">
-          <label className="block mb-2" htmlFor="username">Username</label>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            className="border rounded w-full p-2"
-            value={credentials.username}
-            onChange={handleChange}
-            required
-          />
+          <div className="flex items-center border rounded p-2">
+            <User size={18} className="text-gray-500 mr-2" />
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              className="w-full outline-none"
+              value={credentials.username}
+              onChange={e => setCredentials({...credentials, username: e.target.value})}
+              required
+            />
+          </div>
         </div>
-        <div className="mb-4">
-          <label className="block mb-2" htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            className="border rounded w-full p-2"
-            value={credentials.password}
-            onChange={handleChange}
-            required
-          />
+        
+        <div className="mb-6">
+          <div className="flex items-center border rounded p-2">
+            <Lock size={18} className="text-gray-500 mr-2" />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              className="w-full outline-none"
+              value={credentials.password}
+              onChange={e => setCredentials({...credentials, password: e.target.value})}
+              required
+            />
+          </div>
         </div>
-        <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded">Login</button>
+        
+        <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded w-full">
+          Login
+        </button>
       </form>
     </div>
   );

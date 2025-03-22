@@ -1,5 +1,5 @@
 // src/HeroSection.jsx
-import bannerImage from '../Images/hero-banner1.png'; 
+import bannerImage from '/Images/hero-banner1.png'; 
 
 const HeroSection = () => (
   <section className="w-full flex justify-center my-8">
